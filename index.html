@@ -296,7 +296,7 @@ enquiryForm.addEventListener('submit', (e) => {
   const description = document.getElementById('description').value.trim();
   
   // Create the WhatsApp message
-  const message = `Hello BK Enterprises, I'm ${name}. ${description}`;
+  const message = `Hello BK Enterprises,\n I'm ${name}.\n ${description}`;
   
   // Create the WhatsApp URL
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
