@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BK Enterprises - Your trusted partner for premium building materials and oil trading solutions in Kerala since 2010. Serving Uppala, Seethangoli, and Puttur with quality construction materials and reliable oil import/export services.">
+<meta name="keywords" content="bk buildmart,bk build,bk buildmart mura,building materials, oil trade, construction supplies, Kerala, Uppala, Seethangoli, Puttur, tiles, sanitary ware, electrical components, plumbing materials, oil import export">
+
+<!-- Open Graph Meta Tags for better social media sharing -->
+<meta property="og:title" content="BK Enterprises - Building Materials & Oil Trade Since 2010">
+<meta property="og:description" content="Premium building materials and oil trading solutions for residential and commercial projects across Kerala.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bkenterprises.com">
+<meta property="og:image" content="https://www.bkenterprises.com/logo-image.jpg">
+
+<!-- Additional helpful meta tags -->
+<meta name="robots" content="index, follow">
+<meta name="author" content="BK Enterprises">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BK Enterprises - Building Materials & Oil Trade</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -155,7 +169,25 @@
         <div class="container">
             <h2>Ready to Start Your Project?</h2>
             <p>Contact BK Enterprises today for premium building materials and oil trading solutions that meet your specific requirements.</p>
-            <a href="#" class="cta-btn">Make an Inquiry</a>
+            <a href="#" id="enquiry-btn" class="cta-btn">Make an Inquiry</a>
+            <!-- Enquiry Modal -->
+<div id="enquiry-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Make an Enquiry</h2>
+      <form id="enquiry-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Enquiry Details</label>
+          <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -230,6 +262,47 @@
         window.addEventListener('load', () => {
             document.querySelector('.loader').style.display = 'none';
         });
+        // Enquiry modal functionality
+const enquiryBtn = document.getElementById('enquiry-btn');
+const enquiryModal = document.getElementById('enquiry-modal');
+const closeModal = document.querySelector('.close-modal');
+const enquiryForm = document.getElementById('enquiry-form');
+const whatsappNumber = '+918105527943'; // Replace with your actual WhatsApp number
+
+enquiryBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  enquiryModal.style.display = 'block';
+});
+
+closeModal.addEventListener('click', () => {
+  enquiryModal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === enquiryModal) {
+    enquiryModal.style.display = 'none';
+  }
+});
+
+enquiryForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value.trim();
+  const description = document.getElementById('description').value.trim();
+  
+  // Create the WhatsApp message
+  const message = `Hello BK Enterprises, I'm ${name}. ${description}`;
+  
+  // Create the WhatsApp URL
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  
+  // Open WhatsApp in a new tab
+  window.open(whatsappUrl, '_blank');
+  
+  // Close the modal and reset form
+  enquiryModal.style.display = 'none';
+  enquiryForm.reset();
+});
     </script>
 </body>
 </html>
